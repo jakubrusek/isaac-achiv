@@ -1,0 +1,44 @@
+body {
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #242333;
+  color: #ffffff;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  color: #01b0d3;
+}
+
+#container {
+  text-align: center;
+  width: 100%;
+
+}
+
+img {
+  margin: 5px;
+}
+
+#swap-achiv {
+  width: 150px;
+  min-height: 30px;
+  font-size: medium;
+  margin-left: 50px;
+  float:left;
+}
+
+.preface {
+  background-color: #313046;
+  width:100%;
+  height:30px;
+  vertical-align: middle;
+}
+
+.indicator {
+  float:right;
+  margin-right: 50px;
+  vertical-align: middle;
+  font-size:large;
+  line-height: 30px;
+}

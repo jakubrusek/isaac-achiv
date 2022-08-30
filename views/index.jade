@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  
+  div(id="container")
+    h1= title
+    p Welcome to #{title}
+    form(id="steam-id-form", action="/steamid", method="GET")
+      input(type="text", placeholder="Enter your steamID", name="steamid")
+      button(name="steamid") Click!
+
+
+  script. 
+    $("form").submit(function () {
+      // prevent the default GET form behavior (name-value pairs)
+      event.preventDefault();
+
+      // Get the action attribute
+      var action = $("form").attr("action").toLowerCase();
+
+      // For each form element found, replace {elementName} in the action attribute to build a URL from template
+      var values = $("form").serialize().split("&");
+
+      var tokens = values[0].split("=");
+      action += "/" + tokens[1];
+
+      // Send the user off to the URL w/ template elements replaced
+      window.location.href = action;
+    });

@@ -1,0 +1,173 @@
+extends layout
+
+block content
+  .preface 
+    button(id="swap-achiv", onclick="swap()") Show unlocked
+    .indicator 
+      =response.length + " / " + gamedata.length + " ( " + Math.round(response.length * 100 / gamedata.length) + "% )"
+      
+  div(id="container")
+
+    - var generatedids = [];
+    - var n = 0;
+    - var names = [];
+
+    - gamedata.forEach(x => names.push(x.name));
+
+
+    mixin generate_achiv(category, achiv_ids)
+      h1(class=`collection${n}`)=category 
+      .achiv-container(class=`collection${n}`)
+        - n++;
+
+        each achiv_id in achiv_ids
+          -generatedids.push(achiv_id);
+          a(href="https://bindingofisaacrebirth.fandom.com/wiki/".concat(gamedata[achiv_id].displayName.replace(/ /g,"_"))
+            title=gamedata[achiv_id].tooltip
+            target="_blank"
+            class=achiv_id
+            )
+            img(src=gamedata[achiv_id].icon
+                alt=gamedata[achiv_id].displayName
+                title=gamedata[achiv_id].tooltip
+              )
+
+    +generate_achiv("Isaac",         [69 , 166, 42 , 105, 146, 48 , 190, 295, 178, 231, 281, 439, 440, 473, 245])
+    +generate_achiv("Maggy",         [108, 167, 44 , 19 , 70 , 49 , 191, 296, 179, 232, 282, 441, 442, 474, 246])
+    +generate_achiv("Cain",          [109, 170, 45 , 20 , 50 , 74 , 192, 297, 180, 233, 283, 443, 444, 475, 253])
+    +generate_achiv("Judas",         [107, 169, 71 , 106, 51 , 76 , 193, 298, 181, 234, 284, 445, 446, 476, 255])
+    +generate_achiv("???",           [113, 173, 47 , 28 , 72 , 112, 194, 299, 182, 235, 285, 447, 448, 477, 244])
+    +generate_achiv("Eve",           [111, 168, 43 , 75 , 110, 52 , 195, 301, 183, 236, 287, 449, 450, 478, 247])
+    +generate_achiv("Samson",        [114, 176, 55 , 53 , 73 , 54 , 196, 300, 184, 237, 286, 451, 452, 479, 254])
+    +generate_achiv("Azazel",        [8  , 172, 126, 125, 46 , 127, 197, 303, 185, 238, 289, 453, 454, 480, 251])
+    +generate_achiv("Lazarus",       [104, 171, 116, 115, 118, 117, 198, 304, 186, 239, 290, 455, 456, 481, 249])
+    +generate_achiv("Eden",          [124, 175, 121, 120, 123, 122, 199, 302, 187, 240, 288, 457, 458, 482, 248])
+    +generate_achiv("The Lost",      [164, 174, 129, 128, 131, 130, 200, 306, 188, 241, 292, 459, 460, 483, 153])
+    +generate_achiv("Lilith",        [206, 243, 204, 202, 205, 203, 201, 305, 189, 242, 291, 461, 462, 484, 252])
+    +generate_achiv("Keeper",        [272, 273, 269, 268, 271, 270 ,265, 307, 264, 266, 293, 463, 464, 485, 275])
+    +generate_achiv("Apollyon",      [313, 317, 310, 309, 312, 311, 315, 308, 314, 316, 294, 465, 466, 486, 318])
+    +generate_achiv("The Forgotten", [394, 389, 391, 390, 393, 392, 396, 397, 395, 400, 398, 467, 468, 487, 399])
+    +generate_achiv("Bethany",       [420, 415, 416, 417, 418, 419, 421, 423, 422, 426, 424, 469, 470, 488, 425])
+    +generate_achiv("Jacob & Esau",  [432, 427, 428, 429, 430, 431, 433, 435, 434, 438, 436, 471, 472, 489, 437])
+
+    +generate_achiv("Tainted Isaac",        [547, 540, 617, 600, 583, 548, 490])
+    +generate_achiv("Tainted Maggy",        [549, 529, 618, 601, 584, 550, 491])
+    +generate_achiv("Tainted Cain",         [551, 533, 619, 602, 585, 552, 492])
+    +generate_achiv("Tainted Judas",        [553, 524, 620, 603, 586, 554, 493])
+    +generate_achiv("Tainted ???",          [555, 527, 621, 604, 587, 556, 494])
+    +generate_achiv("Tainted Eve",          [557, 526, 622, 605, 588, 558, 495])
+    +generate_achiv("Tainted Samson",       [559, 534, 623, 606, 589, 560, 496])
+    +generate_achiv("Tainted Azazel",       [561, 538, 624, 607, 590, 562, 497])
+    +generate_achiv("Tainted Lazarus",      [563, 542, 625, 608, 591, 564, 498])
+    +generate_achiv("Tainted Eden",         [565, 543, 626, 609, 592, 566, 499])
+    +generate_achiv("Tainted Lost",         [567, 523, 627, 610, 593, 568, 500])
+    +generate_achiv("Tainted Lilith",       [569, 525, 628, 611, 594, 570, 501])
+    +generate_achiv("Tainted Keeper",       [571, 535, 629, 612, 595, 572, 502])
+    +generate_achiv("Tainted Apollyon",     [573, 539, 630, 613, 596, 574, 503])
+    +generate_achiv("Tainted Forgotten",    [575, 536, 631, 614, 597, 576, 504])
+    +generate_achiv("Tainted Bethany",      [577, 528, 632, 615, 598, 578, 505])
+    +generate_achiv("Tainted Jacob & Esau", [579, 541, 633, 616, 599, 580, 506])
+
+    +generate_achiv("Mom Kills" , [3, 4, 5, 26])
+    +generate_achiv("Mom's Heart Kills" , [7, 9, 10, 31, 32, 33, 136, 137, 138, 147, 341, 342, 343, 344])
+    +generate_achiv("Various Boss Kill", [6, 14, 21, 22, 23, 24, 40, 85, 86, 87, 140, 355, 371, 372])
+    +generate_achiv("Beat Chapters", [12, 13, 15, 16, 17, 36, 37, 38, 39, 66, 80, 82, 152, 350, 359, 364, 367, 373])
+    +generate_achiv("Challenges", [88, 89, 90, 91, 92, 93, 119, 95, 96, 97, 98, 99, 59, 62, 100, 101, 102, 103, 61, 94, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 330, 331, 332, 333, 334, 516, 517, 518, 519, 520, 521, 530, 531, 532, 537])
+    +generate_achiv("Challenge Unlocks", [154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 276 ,277 ,278 ,279 ,280 ,507 ,508 ,509 ,510 ,511 ,512 ,513 ,514, 515])
+    +generate_achiv("Shop", [132, 148, 133, 149, 134, 150, 165, 151, 58, 135, 60, 363, 378, 581])
+    +generate_achiv("Greed Donation Machine", [218, 256, 219, 220, 258, 259, 260, 340, 261, 262, 257, 274])
+    +generate_achiv("Character Unlocks", [0, 1, 2, 31, 41, 78, 79, 80, 81, 339, 387, 403, 404])
+    +generate_achiv("Completion", [68, 83, 267, 263, 338, 546, 635, 636])
+
+    //- REST OF ACHIEVEMENTS
+    - var dif = [...Array(637).keys()].filter(x => !generatedids.includes(x));
+    +generate_achiv("Misc", dif)
+
+    - var unlockedids = [];
+
+    - response.forEach(achiv => unlockedids.push(names.findIndex(x => x == achiv.name)));
+
+    - var nonunlockedids = [...Array(637).keys()].filter(x => !unlockedids.includes(x));
+
+
+  script.
+    var _achievements = [#{unlockedids}];
+    var _achievementsToUnlock = [#{nonunlockedids}];
+    var _n = #{n - 1};
+    var toGet = true;
+    var _names = [#{names}];
+    
+    function hideAchivements(achievements){
+      achievements.forEach(id => {
+        var achivsToHide = document.getElementsByClassName(id);
+        for(var i = 0; i < achivsToHide.length; i++){
+          achivsToHide[i].style.display = "none";
+        };
+      });
+    }; 
+    
+    function hideCollections(n){
+      var collections = [];
+      for (i = 0; i <= n; i++){
+        collections.push(`collection${i}`);
+      };
+
+      collections.forEach(collection => {
+        var children = document.getElementsByClassName(collection)[1].children;
+        var all_hidden = true;
+
+        for(let i =0;i<children.length; i++){
+          if (children[i].style.display != "none"){
+            all_hidden = false;
+          };
+        }; 
+
+        if (all_hidden) {
+          var collectionToHide = document.getElementsByClassName(collection)[0];
+            collectionToHide.style.display = "none";
+        };
+      });
+    };
+
+    function restoreAchivements(achievements){
+      achievements.forEach(id => {
+        var achivsToRestore = document.getElementsByClassName(id);
+        for(var i = 0; i < achivsToRestore.length; i++){
+          achivsToRestore[i].style.display = "";
+        };
+      });
+    };
+
+    function restoreCollections(n){
+      var collections = [];
+      for (i = 0; i <= n; i++){
+        collections.push(`collection${i}`);
+      };
+
+      collections.forEach(collection => {
+        if ( document.getElementsByClassName(collection)[0].style.display == "none"){
+          document.getElementsByClassName(collection)[0].style.display = "";
+        };
+      });
+    };
+
+    function swap(){
+      if (toGet) {
+        restoreAchivements(_achievements);
+        restoreCollections(_n);
+        hideAchivements(_achievementsToUnlock);
+        hideCollections(_n);
+        document.getElementById("swap-achiv").innerHTML = "Show to unlock";
+      }
+      else {
+        restoreAchivements(_achievementsToUnlock);
+        restoreCollections(_n);
+        hideAchivements(_achievements);
+        hideCollections(_n);
+        document.getElementById("swap-achiv").innerHTML = "Show unlocked";
+      }
+      toGet = !toGet;
+    };
+
+    hideAchivements(_achievements);
+    hideCollections(_n);
